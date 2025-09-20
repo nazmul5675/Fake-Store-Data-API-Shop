@@ -3,8 +3,14 @@ import { CiStar } from "react-icons/ci";
 import { IoIosArrowDropdownCircle } from "react-icons/io";
 const Product = ({ product }) => {
     const [isModalOpen, setIsModalOpen] = useState(false)
-    console.log(product);
-    const { category, description, image, price, title, rating } = product;
+    // console.log(product);
+    const { category, description, image, price, title, rating, id } = product;
+
+    const [isAddToCart, setIsAddToCart] = useState(true)
+    const handleAddToCart = (id) => {
+        console.log(id);
+        setIsAddToCart(false)
+    }
     return (
         <div className="p-10">
             <div className="card bg-base-100 w-96 shadow-sm p-5 h-[600px]">
@@ -46,7 +52,7 @@ const Product = ({ product }) => {
                         <div className="card-actions flex justify-between items-center ">
                             <button className="btn btn-primary">{price} $</button>
 
-                            <button className="btn btn-primary">Add to Cart</button>
+                            <button onClick={() => handleAddToCart(id)} className="btn btn-primary">{isAddToCart ? 'Add To Cart' : 'Already Added'}</button>
                         </div>
 
                     </div>
